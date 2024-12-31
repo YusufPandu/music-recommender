@@ -1,0 +1,217 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    background: #000;
+  }
+  
+  .hero-section {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(50, 0, 100, 0.8)),
+      url("Images/marcela-laskoski-YrtFlrLo2DQ-unsplash.jpg") no-repeat center
+        center;
+    background-size: cover;
+    width: 100vw;
+    height: 90vh;
+  }
+  
+  .hero-section::after {
+    content: ""; /* Wajib untuk pseudo-element */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%; /* Atur tinggi gradient, bisa disesuaikan */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 1)
+    ); /* Gradient bawah */
+  }
+  
+  .submit-btn,
+  .upload-again-btn,
+  .action-btn {
+    pointer-events: auto; /* Pastikan tombol bisa menerima klik */
+  }
+  
+  header {
+    position: relative;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
+  }
+  
+  .navbar {
+    font-size: 1.5rem;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    height: 5rem;
+    top: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0), black);
+  }
+  
+  .navbar li {
+    margin: 0 15px;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    color: white;
+    position: relative;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+  }
+  
+  .navbar a:hover,
+  .navbar .active {
+    color: #ff00ff;
+    border-bottom: 2px solid #ff00ff;
+  }
+  
+  .hero h1 {
+    font-size: 4rem;
+    color: #ff00ff;
+  }
+  
+  .web-content {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(50, 0, 100, 0.8)),
+      url("Images/zac-bromell-y8PLjuPoDlM-unsplash.jpg") no-repeat top center;
+    background-size: cover;
+    position: relative;
+    z-index: -2;
+  }
+  
+  .web-content::after {
+    content: ""; /* Wajib untuk pseudo-element */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%; /* Atur tinggi gradient, bisa disesuaikan */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgb(0, 0, 0)
+    ); /* Gradient bawah */
+    z-index: -2;
+  }
+  
+  .web-content::before {
+    content: ""; /* Wajib untuk pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%; /* Atur tinggi gradient, bisa disesuaikan */
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0),
+      rgb(0, 0, 0)
+    ); /* Gradient bawah */
+    z-index: -2;
+  }
+  
+  .submit-btn,
+  .upload-again-btn,
+  .action-btn {
+    position: relative;
+    z-index: 100; /* Berikan z-index yang lebih tinggi */
+  }
+  
+  .play-btn {
+    width: 5rem;
+    height: 5rem;
+    background: #ff00ff;
+    border-radius: 50%;
+    margin: 20px auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+  }
+  
+  .upload-section {
+    display: flex;
+    flex-direction: column;
+    max-width: 25rem;
+    margin-top: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 50px 0;
+  }
+  
+  .upload-box {
+    border: 2px dashed #ff00ff;
+    padding: 20px;
+    display: inline-block;
+  }
+  
+  .submit-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #ff00ff;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .recommendations {
+    position: relative;
+    padding: 50px;
+    text-align: center;
+    color: #ff00ff;
+  }
+  
+  .card {
+    background: white;
+    color: black;
+    padding: 20px;
+    margin: 20px auto;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .card h3 {
+    margin-bottom: 10px;
+  }
+  
+  .action-btn {
+    background: none;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .upload-again-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #ff00ff;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: #000000;
+    color: white;
+  }
+  
+  .creators ul {
+    list-style: none;
+    padding: 0;
+  }
+  

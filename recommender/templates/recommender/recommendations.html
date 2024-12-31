@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hasil Rekomendasi</title>
+    <link rel="stylesheet" href="{% static 'recommender/style.css' %}" />
+  </head>
+  <body>
+    <div class="hero-section">
+      <nav>
+        <ul class="navbar">
+          <li><a href="/">Beranda</a></li>
+          <li><a href="" class="active">Hasil</a></li>
+          <li><a href="#credits">Kredit</a></li>
+        </ul>
+      </nav>
+      <header>
+        <div class="hero">
+          <h1>Berikut Rekomendasi Lagu Kamu</h1>
+          <a href="#credits">
+            <div class="play-btn">
+                <img class="play-btn" src="{% static 'recommender/play.png' %}" alt="Icon" />
+              </div>
+            </a>
+        </div>
+      </header>
+    </div>
+
+    <div class="web-content">
+      <section id="result" class="recommendations">
+        <h2>Rekomendasi Lagu</h2>
+
+        {% for recommendation in recommendations %}
+        <div class="card">
+          <h3>{{ recommendation.label|default:"Unknown Genre" }}</h3>
+          <audio controls>
+            <source src="/media/{{ recommendation.filename }}" type="audio/wav">
+            Browser Anda tidak mendukung audio player.
+          </audio>
+          <a href="/media/{{ recommendation.filename }}" download>
+            <button class="action-btn">
+              <img class="action-btn" src="{% static 'recommender/download.png' %}" alt="Download Icon" />
+            </button>
+          </a>
+        </div>
+        {% endfor %}
+        
+        <button class="upload-again-btn">
+          <a href="{% url 'upload_music' %}">Upload lagu lain</a>
+        </button>
+      </section>
+    </div>
+
+    <footer id="credits">
+      <p>
+        Sebuah website implementasi Random Forest untuk mencari rekomendasi lagu
+        berdasarkan lagu yang diunggah.
+      </p>
+      <div class="creators">
+        <p>Creator:</p>
+        <ul>
+          <li>Yusuf Pandu Satrio Aji</li>
+          <li>Aditya Rizqi Pradana</li>
+          <li>Zidnan Ali</li>
+        </ul>
+      </div>
+      <p>&copy;2024 Tim Klepon</p>
+    </footer>
+    <script src="{% static 'recommender/script.js' %}"></script>
+  </body>
+</html>

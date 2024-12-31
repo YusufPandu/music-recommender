@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rekomendasi Lagu</title>
+    <link rel="stylesheet" href="{% static 'recommender/style.css' %}" />
+  </head>
+  <body>
+    <div class="hero-section">
+      <nav>
+        <ul class="navbar">
+          <li><a href="/" class="active">Beranda</a></li>
+          <li><a href="recommendations">Hasil</a></li>
+          <li><a href="#credits">Kredit</a></li>
+        </ul>
+      </nav>
+      <header>
+        <div class="hero">
+          <h1>Cari Rekomendasi Lagu Kamu di Sini!</h1>
+          <a href="#credits">
+          <div class="play-btn">
+              <img class="play-btn" src="{% static 'recommender/play.png' %}" alt="Icon" />
+            </div>
+          </a>
+        </div>
+      </header>
+    </div>
+
+    <div class="web-content">
+      <section id="search" class="upload-section">
+        <div class="upload-box">
+          <p>Upload lagu kamu di sini</p>
+          {% if error_message %}
+             <p style="color: red;">{{ error_message }}</p>
+          {% endif %}
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="music_file" id="file-upload" accept=".mp3, .wav, .m4a" />
+            <!-- <button type="submit" id="submit-btn" class="submit-btn" disabled>Mulai</button> -->
+            <button type="submit" class="submit-btn">Mulai</button>
+          </form>
+          
+        </div>
+      </section>
+    </div>
+
+    <footer id="credits">
+      <p>
+        Sebuah website implementasi Random Forest untuk mencari rekomendasi lagu
+        berdasarkan lagu yang diunggah.
+      </p>
+      <div class="creators">
+        <p>Creator:</p>
+        <ul>
+          <li>Yusuf Pandu Satrio Aji</li>
+          <li>Aditya Rizqi Pradana</li>
+          <li>Zidnan Ali</li>
+        </ul>
+      </div>
+      <p>&copy;2024 Tim Klepon</p>
+    </footer>
+    <script src="{% static 'recommender/script.js' %}"></script>
+  </body>
+</html>

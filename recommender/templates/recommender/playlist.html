@@ -1,0 +1,12 @@
+<h1>Your Playlists</h1>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Playlist Name" required>
+    <button type="submit">Create Playlist</button>
+</form>
+<ul>
+    {% for playlist in playlists %}
+    <li>{{ playlist.name }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'home' %}">Back to Home</a>

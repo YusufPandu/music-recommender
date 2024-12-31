@@ -1,0 +1,92 @@
+{% load static %}
+<h1>Welcome to Music Recommender</h1>
+<ul>
+    {% for song in songs %}
+    <li>{{ song.title }} by {{ song.artist.name }} - {{ song.genre.name }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'recommendations' %}">Get Recommendations</a>
+<a href="{% url 'playlist' %}">Playlist</a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rekomendasi Lagu</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="hero-section">
+      <nav>
+        <ul class="navbar">
+          <li><a href="#" class="active">Beranda</a></li>
+          <li><a href="#search">Cari Lagu</a></li>
+          <li><a href="#result">Hasil</a></li>
+          <li><a href="#credits">Kredit</a></li>
+        </ul>
+      </nav>
+      <header>
+        <div class="hero">
+          <h1>Cari Rekomendasi Lagu Kamu di Sini!</h1>
+          <div class="play-btn">
+            <img class="play-btn" src="Images\play.png" alt="Icon" />
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="web-content">
+      <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <section id="search" class="upload-section">
+        <div class="upload-box">
+          <p>Upload lagu kamu di sini</p>
+          <input type="file" name="music_file" accept="audio/*" required>
+        </div>
+        <button class="submit-btn">Mulai</button>
+      </section>
+      </form>
+
+      <section id="result" class="recommendations">
+        <h2>Berikut adalah rekomendasi lagu</h2>
+        <ul>
+          {% for song in recommendations %}
+          <li>
+        <div class="card">
+          <h3>{{ song.songname }}</h3>
+          <audio controls>
+            <source src="{{ MEDIA_URL }}dataset/genres_original/{{ song.filename }}" type="audio/wav"/>
+            Browser Anda tidak mendukung audio player.
+          </audio>
+          <a href="{{ MEDIA_URL }}dataset/genres_original/{{ song.filename }}" download>
+            <button class="action-btn">
+              <img class="action-btn" src="Images\download.png" alt="Icon" />
+            </button>  
+          </a>
+        </div>
+        </li>
+          {% endfor %}
+       </ul>
+
+        <button class="upload-again-btn">Upload lagu lain</button>
+      </section>
+    </div>
+
+    <footer id="credits">
+      <p>
+        Sebuah website implementasi Random Forest untuk mencari rekomendasi lagu
+        berdasarkan lagu yang diunggah.
+      </p>
+      <div class="creators">
+        <p>Creator:</p>
+        <ul>
+          <li>Yusuf Pandu Satrio Aji</li>
+          <li>Aditya Rizqi Pradana</li>
+          <li>Zidnan Ali</li>
+        </ul>
+      </div>
+      <p>&copy;2024 Tim Klepon</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
